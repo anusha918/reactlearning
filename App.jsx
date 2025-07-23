@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
-  const isLoggedIn = true;
+  const [accepted, setAccepted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(accepted ? 'Terms accepted.' : 'Please accept terms.');
+  };
 
   return (
-    <div>
-      {isLoggedIn ? <h2>Welcome back!</h2> : <h2>Please log in.</h2>}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        <input
+          type="checkbox"
+          checked={accepted}
+          onChange={() => setAccepted(!accepted)}
+        />
+        Accept Terms & Conditions
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
