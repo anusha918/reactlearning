@@ -1,39 +1,18 @@
-import { useState } from 'react';
-import './App.css';
+import React from 'react';
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    alert(`Email: ${email}\nPassword: ${password}`);
-  };
+  const fruits = ['Apple', 'Banana', 'Cherry'];
 
   return (
-    <div className="container">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div>
+      <h1>Fruit List</h1>
+      <ul>
+        {fruits.map((fruit, index) => (
+          <li key={index}>{fruit}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default App;
-
-
