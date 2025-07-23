@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
-  const fruits = ['Apple', 'Banana', 'Cherry'];
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Hello, ${name}`);
+  };
 
   return (
-    <div>
-      <h1>Fruit List</h1>
-      <ul>
-        {fruits.map((fruit, index) => (
-          <li key={index}>{fruit}</li>
-        ))}
-      </ul>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
