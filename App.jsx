@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [accepted, setAccepted] = useState(false);
+  const [gender, setGender] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(accepted ? 'Terms accepted.' : 'Please accept terms.');
+    alert(`Selected Gender: ${gender}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         <input
-          type="checkbox"
-          checked={accepted}
-          onChange={() => setAccepted(!accepted)}
+          type="radio"
+          value="Male"
+          checked={gender === 'Male'}
+          onChange={(e) => setGender(e.target.value)}
         />
-        Accept Terms & Conditions
+        Male
       </label>
-      <br />
+      <label>
+        <input
+          type="radio"
+          value="Female"
+          checked={gender === 'Female'}
+          onChange={(e) => setGender(e.target.value)}
+        />
+        Female
+      </label>
       <button type="submit">Submit</button>
     </form>
   );
