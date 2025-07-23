@@ -1,35 +1,25 @@
 import React, { useState } from 'react';
 
-function App() {
-  const [gender, setGender] = useState('');
+const CountDisplay = React.memo(({ count }) => {
+  console.log('CountDisplay rendered');
+  return <h2>Count: {count}</h2>;
+});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Selected Gender: ${gender}`);
-  };
+function App() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState('');
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input
-          type="radio"
-          value="Male"
-          checked={gender === 'Male'}
-          onChange={(e) => setGender(e.target.value)}
-        />
-        Male
-      </label>
-      <label>
-        <input
-          type="radio"
-          value="Female"
-          checked={gender === 'Female'}
-          onChange={(e) => setGender(e.target.value)}
-        />
-        Female
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <CountDisplay count={count} />
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <br />
+      <input
+        placeholder="Type something"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+    </div>
   );
 }
 
