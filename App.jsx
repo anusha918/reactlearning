@@ -14,7 +14,7 @@ function App() {
       <CountDisplay count={count} />
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <br />
-      <h1>Text Input</h1>
+      <h1>Welcome to react</h1>
       <input
         placeholder="Type something"
         value={text}
